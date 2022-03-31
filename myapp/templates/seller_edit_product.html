@@ -1,0 +1,263 @@
+{% extends 'seller_header.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   
+ </head>
+  <body class="goto-here">
+       
+
+     <div class="hero-wrap hero-bread" style="background-image: url({% static 'images/bg_6.jpg' %});">
+        <div class="container">
+          <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'seller_index' %}">Home</a></span> <span>Edit Product</span></p>
+              <h1 class="mb-0 bread">Edit Product</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="ftco-section contact-section bg-light">
+        <div class="container">
+            <div class="row d-flex mb-5 contact-info">
+            <div class="w-100"></div>
+            <div class="col-md-3 d-flex">
+                <div class="info bg-white p-4">
+                  <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex">
+                <div class="info bg-white p-4">
+                  <p><span>Mobile:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex">
+                <div class="info bg-white p-4">
+                  <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+                </div>
+            </div>
+                <div class="info bg-white p-4">
+                  <p><span>Website</span> <a href="#">yoursite.com</a></p>
+                </div>
+            </div>
+          </div>
+          <div class="row block-8">
+          <div class="col-md-6 offset-md-2 order-md-last d-flex">
+            
+              <form action="{% url 'seller_edit_product' pk=product.pk %}" Method="post" class="bg-white p-5 contact-form" enctype="multipart/form-data">
+              
+                {% csrf_token %}
+                <div class="form-group">  
+                  {% if msg %}
+                      <h4 style="color:orange;"> {{msg}} </h4>
+                  {% endif %}
+              
+                </div>
+                  <div class="form-group" >
+                    <select name="product_collection" class="form-control"> 
+                      {% if product.product_collection == "men"%}
+                      <option value="men" selected >Men </option>
+                      <option value="women">Women </option>
+                      <option value="kids">Kids </option>
+                    
+                      {% elif product.product_collection == "women"%}
+                      <option value="men">Men </option>
+                      <option value="women" selected>Women </option>
+                      <option value="kids">Kids </option>
+
+                      {% elif product.product_collection == "kids"%}
+                      <option value="men">Men </option>
+                      <option value="women">Women </option>
+                      <option value="kids"selected>Kids </option>
+
+                      {% else%}
+                      <option>-----Select Collection----- </option>
+                      <option value="men">Men </option>
+                      <option value="women" selected>Women </option>
+                      <option value="kids">Kids </option>
+
+                      {% endif%}
+                      
+                    </select>
+                    <br>
+                  </div>
+                <div class="form-group" >
+                  <select name="product_category" class="form-control"> 
+                    {% if product.product_category == "shirt"%}
+                    <option value="shirt" selected >Shirt </option>
+                    <option value="tshirt">T-shirt </option>
+                    <option value="jeans">Jeans </option>
+
+                    {% elif product.product_category == "tshirt"%} 
+                    <option value="shirt">Shirt </option>
+                    <option value="tshirt"selected >T-shirt </option>
+                    <option value="jeans">Jeans </option>
+
+                    {% elif product.product_category == "jeans"%} 
+                    <option value="shirt">Shirt </option>
+                    <option value="tshirt">T-shirt </option>
+                    <option value="jeans"selected >Jeans </option>
+
+                    {% else%} 
+                    <option>-----Select Category----- </option>
+                    <option value="shirt">Shirt </option>
+                    <option value="tshirt">T-shirt </option>
+                    <option value="jeans">Jeans </option>
+
+                    {% endif %} 
+                   
+                  </select>
+                </div>
+                <br>
+                <div class="form-group" >
+                <select name="product_size" class="form-control"> 
+                    {% if product.product_size == "s"%}
+                    <option value="s" selected>Small </option>
+                    <option value="m">Medium </option>
+                    <option value="l">Large</option>
+
+                    {% elif product.product_size == "m"%}
+                    <option value="s">Small </option>
+                    <option value="m" selected>Medium </option>
+                    <option value="l">Large</option>
+
+                    {% elif product.product_size == "l"%}
+                    <option value="s">Small </option>
+                    <option value="m">Medium </option>
+                    <option value="l" selected>Large</option>
+
+                    {% else%}
+                    <option>-----Select Size----- </option>
+                    <option value="s">Small </option>
+                    <option value="m">Medium </option>
+                    <option value="l">Large</option>
+
+                    {% endif %}
+                    
+                  
+                </select>
+                </div>
+                <br>
+                <div class="form-group" >
+                <select name="product_color" class="form-control"> 
+                    {% if product.product_color == "blue"%}
+                    <option value="blue" selected>Blue </option>
+                    <option value="black">Black </option>
+                    <option value="white">White </option>
+                    <option value="pink">Pink </option>
+                    <option value="green">Green </option>
+                    <option value="red">Red </option>
+                    <option value="yellow">Yellow </option>
+
+                    {% elif product.product_color == "black"%}
+                    <option value="blue">Blue </option>
+                    <option value="black"selected >Black </option>
+                    <option value="white">White </option>
+                    <option value="pink">Pink </option>
+                    <option value="green">Green </option>
+                    <option value="red">Red </option>
+                    <option value="yellow">Yellow </option>
+
+                    {% elif product.product_color == "white"%}
+                    <option value="blue">Blue </option>
+                    <option value="black">Black </option>
+                    <option value="white"selected>White </option>
+                    <option value="pink">Pink </option>
+                    <option value="green">Green </option>
+                    <option value="red">Red </option>
+                    <option value="yellow">Yellow </option>
+
+                    {% elif product.product_color == "pink"%}
+                    <option value="blue">Blue </option>
+                    <option value="black">Black </option>
+                    <option value="white">White </option>
+                    <option value="pink"selected>Pink </option>
+                    <option value="green">Green </option>
+                    <option value="red">Red </option>
+                    <option value="yellow">Yellow </option>
+
+                    {% elif product.product_color == "green"%}
+                    <option value="blue">Blue </option>
+                    <option value="black">Black </option>
+                    <option value="white">White </option>
+                    <option value="pink">Pink </option>
+                    <option value="green" selected>Green </option>
+                    <option value="red">Red </option>
+                    <option value="yellow">Yellow </option>
+
+                    {% elif product.product_color == "red"%}
+                    <option value="blue">Blue </option>
+                    <option value="black">Black </option>
+                    <option value="white">White </option>
+                    <option value="pink">Pink </option>
+                    <option value="green">Green </option>
+                    <option value="red"selected>Red </option>
+                    <option value="yellow">Yellow </option>
+
+                    {% elif product.product_color == "yellow"%}
+                    <option value="blue">Blue </option>
+                    <option value="black">Black </option>
+                    <option value="white">White </option>
+                    <option value="pink">Pink </option>
+                    <option value="green">Green </option>
+                    <option value="red">Red </option>
+                    <option value="yellow"selected>Yellow </option>
+
+                    {% else%}
+                    <option>-----Select Color----- </option>
+                    <option value="blue">Blue </option>
+                    <option value="black">Black </option>
+                    <option value="white">White </option>
+                    <option value="pink">Pink </option>
+                    <option value="green">Green </option>
+                    <option value="red">Red </option>
+                    <option value="yellow">Yellow </option>
+
+                    {% endif %}
+                  
+                </select>
+                </div>
+                <br>
+                <div class="form-group">
+                  <label>Price <span class="text-danger"> * </span></label>
+                  <input type="text" class="form-control" placeholder="Product-Price" name="product_price" value="{{product.product_price}}">
+                </div>
+                <br>
+                <div class="form-group">
+                <label>Image <span class="text-danger"> * </span></label>
+                <input type="file" class="form-control"  name="product_image">
+              </div>
+              <br>
+
+
+                {% comment %} #to display previous image of product {% endcomment %}
+              <div class="form-group" align="center">
+                <label>Current Image <span class="text-danger"> * </span></label>
+                <img src="{{product.product_image.url}}" width="150px" height="150px" >
+              </div>
+               
+
+                <div>
+                  <br>             
+                  <label>Discription <span class="text-danger"> * </span></label>
+                  <textarea name="product_desc" id="" cols="30" rows="7" class="form-control" placeholder="Enter Your Discription (_!!_)">{{product.product_desc}}"</textarea>
+                </div>
+                <br>             
+                <div class="form-group" align="center">
+                  <input type="submit" value="Update Product" class="btn btn-primary py-3 px-5">
+                </div>
+              </form>
+            
+            </div>
+
+          </div>
+   
+        </div>
+      </section>  
+ </body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+https://stackoverflow.com/questions/737022/how-do-i-disable-right-click-on-my-web-page  
+
+https://www.geeksforgeeks.org/how-to-stop-browser-back-button-using-javascript/
+
+https://stackoverflow.com/questions/6320113/how-to-prevent-form-resubmission-when-page-is-refreshed-f5-ctrlr
+
+
+GITHUB ACC ID PASS
+
+surendrasingh105105@gmail.com
+
+pass:  Djangotest@123

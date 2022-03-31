@@ -1,0 +1,95 @@
+{% extends 'header.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+  </head>
+ <body class="goto-here">
+		
+    <div class="hero-wrap hero-bread" style="background-image: url({% static 'images/bg_6.jpg' %});">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="/">Home</a></span> <span>My Orders</span></p>
+            <h1 class="mb-0 bread"> My Orders</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section bg-light">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-md-10 col-lg-12 order-md-last">
+    				<div class="row">
+
+					{% if carts %}
+
+						{% for i in carts %}
+		    			<div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
+		    				<div class="product">
+		    					<a href="{% url 'product_detail' pk=i.product.pk %}" class="img-prod"><img class="img-fluid" src="{{i.product.product_image.url}}" alt="Colorlib Template" 
+									style="width:180px; height:200px; margin-left:80px">
+		    						
+		    						<div class="overlay"></div>
+		    					</a>
+		    					<div class="text py-3 px-3">
+		    						<h3><a href="#">{{i.product.product_collection}}-{{i.product.product_category}}</a></h3>
+
+                                    <h3>Purchase Date : <a href="#">{{i.date}}</a></h3>
+									
+		    						<div class="d-flex">
+		    							<div class="pricing">
+				    						<p class="price">{{i.product.product_price}}</p>
+				    					</div>
+				    					<div class="rating">
+			    							<p class="text-right">
+			    								<a href="#"><span class="ion-ios-star-outline"></span></a>
+			    								<a href="#"><span class="ion-ios-star-outline"></span></a>
+			    								<a href="#"><span class="ion-ios-star-outline"></span></a>
+			    								<a href="#"><span class="ion-ios-star-outline"></span></a>
+			    								<a href="#"><span class="ion-ios-star-outline"></span></a>
+			    							</p>
+			    						</div>
+			    					</div>
+			    					
+		    					</div>
+		    				</div>
+		    			 </div>	
+
+						{% endfor%}
+
+					{% else %}
+						<h2>Empty !! </h2>
+					{% endif %}
+
+
+		    		</div>
+
+
+
+
+		    		<div class="row mt-5">
+		          <div class="col text-center">
+		        
+		          </div>
+		        </div>
+		    	</div>
+
+		    	<div class="col-md-4 col-lg-2 sidebar">
+		    		
+		    		
+
+
+		    		
+					
+    			</div>
+    		</div>
+    	</div>
+	</section>
+  
+    </body>
+</html>
+{%endblock %}
